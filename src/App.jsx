@@ -106,7 +106,7 @@ function Palette({ label, options, value, onChange }) {
 }
 
 function Timer() {
-  const [seconds, setSeconds] = useState(5)
+  const [seconds, setSeconds] = useState(1500)
   const [isRunning, setIsRunning] = useState(false)
   const [work, setWorking] = useState("Working")
   const [cycles, setCycles] = useState(0)
@@ -131,12 +131,12 @@ function Timer() {
     if (isRunning && seconds > 0) {
       timer = setInterval(() => {
         if (seconds === 1 && work === "Working"){
-          setSeconds(3)
+          setSeconds(300)
           setWorking("Pause")
           if (sounds) breakSound.play()
         } else if (seconds === 1 && work === "Pause"){
           setWorking("Working")
-          setSeconds(5)
+          setSeconds(1500)
           setCycles(cycles + 1)
           if ((cycles + 1) % 2 === 0) {
             setIsRunning(false)
@@ -218,7 +218,7 @@ function Timer() {
           <button type="button" className="btn btn-primary" onClick={() => setIsRunning(!isRunning)}>
             {isRunning ? 'Pause' : 'Start'}
           </button>
-          <button type="button" className="btn btn-secondary" onClick={()=> {setSeconds(5); setIsRunning(false); setWorking("Working"); setCycles(0); setHourDone(false)} }>Restart</button>
+          <button type="button" className="btn btn-secondary" onClick={()=> {setSeconds(1500); setIsRunning(false); setWorking("Working"); setCycles(0); setHourDone(false)} }>Restart</button>
         </div>
       )}
 
